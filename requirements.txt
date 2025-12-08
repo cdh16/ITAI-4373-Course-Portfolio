@@ -1,0 +1,47 @@
+# AI-Powered Artist Promotion Assistant
+# LOCAL-ONLY Dependencies (No Cloud APIs!)
+
+# Web Framework
+flask==3.0.0
+flask-cors==4.0.0
+flask-socketio==5.3.5
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.0
+
+# AI & ML - LOCAL ONLY with Ollama
+ollama==0.3.3
+
+# Browser Automation (for scraping with JS support)
+playwright==1.40.0
+
+# Platform APIs (for reading public data)
+praw==7.7.1
+instaloader==4.10.3
+
+# Web Scraping
+beautifulsoup4==4.12.2
+lxml==4.9.3
+html5lib==1.1
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2023.3
+schedule==1.2.0
+
+# Testing (for implementation phase)
+pytest==7.4.3
+pytest-flask==1.3.0
+pytest-mock==3.12.0
+
+# Development
+black==23.12.1
+flake8==6.1.0

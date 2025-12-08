@@ -1,48 +1,54 @@
-# ITAI-4373-Course-Portfolio
-## An Agentic AI System for Ethical Customer Discovery
+# AI-Powered Artist Promotion Assistant
 
-Built for ITAI 4373: The New Nature of Work in AI
+**An Agentic AI System for Ethical Customer Discovery**
+
+Built for ITAI 4373: The New Nature of Work in AI  
 Client: Joe Fleishman (joefleishmanart.com)
 
-### Project Overview
+---
+
+## Project Overview
+
 This system helps artist Joe Fleishman identify and engage with potential customers online through an intelligent, multi-agent AI system that respects platform rules and maintains authentic human engagement.
 
-#### Key Features
+### Key Features
 
-- Multi-Agent Architecture: Specialized AI agents for monitoring, analysis, and response generation
-- Human-in-the-Loop: Artist approves all responses before sending
-- Ethical Design: Value-first engagement, platform compliance, transparency
-- Real-Time Monitoring: Reddit, Instagram, Pinterest conversation tracking
-- AI-Powered Analysis: Claude Sonnet 4.5 for intent classification and relevance scoring
-- RLHF Training: System learns from artist feedback to improve over time
+- **Multi-Agent Architecture**: Specialized AI agents for monitoring, analysis, and response generation
+- **Human-in-the-Loop**: Artist approves all responses before sending
+- **Ethical Design**: Value-first engagement, platform compliance, transparency
+- **Real-Time Monitoring**: Reddit, Instagram, Pinterest conversation tracking
+- **AI-Powered Analysis**: Claude Sonnet 4.5 for intent classification and relevance scoring
+- **RLHF Training**: System learns from artist feedback to improve over time
 
-### Technology Stack
-#### Backend
+---
 
-- Language: Python 3.11+
-- Framework: Flask 3.0
-- AI: Anthropic Claude Sonnet 4.5, OpenAI GPT-4
-- Agentic: LangGraph (LangChain)
-- Database: PostgreSQL + Pinecone (vector DB)
+## Technology Stack
 
-#### Platform APIs
+### Backend
+- **Language**: Python 3.11+
+- **Framework**: Flask 3.0
+- **AI**: Anthropic Claude Sonnet 4.5, OpenAI GPT-4
+- **Agentic**: LangGraph (LangChain)
+- **Database**: PostgreSQL + Pinecone (vector DB)
 
-- Reddit: PRAW (Python Reddit API Wrapper)
-- Instagram: Apify web scraper
-- Pinterest: Pinterest API
+### Platform APIs
+- **Reddit**: PRAW (Python Reddit API Wrapper)
+- **Instagram**: Apify web scraper
+- **Pinterest**: Pinterest API
 
-#### Frontend
+### Frontend
+- **Framework**: React (for artist dashboard)
+- **Real-time**: Socket.IO
 
-- Framework: React (for artist dashboard)
-- Real-time: Socket.IO
+### Hosting
+- **Backend**: Render
+- **Frontend**: Vercel
+- **Database**: Railway / Supabase
 
-#### Hosting
+---
 
-- Backend: Render
-- Frontend: Vercel
-- Database: Railway / Supabase
+## Project Structure
 
-### Project Structure
 ```
 4373_midterm_repo/
 ├── agents/                    # AI Agent modules
@@ -57,57 +63,70 @@ This system helps artist Joe Fleishman identify and engage with potential custom
 ├── CLAUDE_READTHIS/         # Project documentation
 ├── docs/                    # Proposal and presentation
 ├── app.py                   # Flask application
-└── requirements.txt         # [Dependencies](`url`)
+└── requirements.txt         # Dependencies
 ```
-### Quick Start
-#### 1. Installation
 
-```
-#Clone the repository
+---
+
+## Quick Start
+
+### 1. Installation
+
+```bash
+# Clone the repository
 git clone <repository-url>
 cd 4373_midterm_repo
 
-#Create virtual environment
-
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-#Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-#### 2. Configuration
-```
-#Copy environment template
+### 2. Configuration
+
+```bash
+# Copy environment template
 cp .env.template .env
 
-#Edit .env and add your API keys:
+# Edit .env and add your API keys:
 # - ANTHROPIC_API_KEY
 # - REDDIT_CLIENT_ID & REDDIT_CLIENT_SECRET
 # - PINTEREST_ACCESS_TOKEN
 # - PINECONE_API_KEY
 ```
-#### 3. Database Setup
-```
-#Initialize PostgreSQL database
+
+### 3. Database Setup
+
+```bash
+# Initialize PostgreSQL database
 python -c "from database.models import init_db; from config.config import get_config; init_db(get_config().DATABASE_URL)"
 ```
-#### 4. Run the Application
-```
-#Start the Flask server
+
+### 4. Run the Application
+
+```bash
+# Start the Flask server
 python app.py
 
-#Or use the startup scripts:
-#Windows:
+# Or use the startup scripts:
+# Windows:
 start.bat
 
-#Linux/Mac:
+# Linux/Mac:
 ./start.sh
 ```
-The application will be available at http://localhost:5000
 
-### System Architecture
-#### Multi-Agent Workflow
+The application will be available at `http://localhost:5000`
+
+---
+
+## System Architecture
+
+### Multi-Agent Workflow
+
 ```
 1. DATA COLLECTION AGENTS
    ├─ Reddit Agent → Monitors subreddits
@@ -131,107 +150,128 @@ The application will be available at http://localhost:5000
    └─ RLHF Trainer → Learns from artist feedback
 ```
 
-### API Endpoints
-#### Dashboard
+---
 
+## API Endpoints
+
+### Dashboard
 - `GET /dashboard` - Main dashboard
 - `GET /dashboard/opportunities` - View opportunities
 - `GET /dashboard/analytics` - View analytics
 
-#### API
-- `GET /api/opportunities `- List opportunities
+### API
+- `GET /api/opportunities` - List opportunities
 - `POST /api/opportunities/<id>/approve` - Approve response
 - `POST /api/opportunities/<id>/reject` - Reject opportunity
 - `GET /api/analytics/summary` - Get analytics
 - `POST /api/monitoring/start` - Start monitoring
 - `POST /api/monitoring/stop` - Stop monitoring
 
-### Ethical Framework
-#### Core Principles
+---
 
-1. Value-First Engagement: Provide helpful information before any self-promotion
-2. Human Approval: AI suggests, human decides
-3. Platform Compliance: Respect all Terms of Service
-4. Transparency: Acknowledge AI assistance if asked
-5. Rate Limiting: Maximum 5 engagements per platform per day
+## Ethical Framework
 
-#### Platform-Specific Rules
+### Core Principles
+
+1. **Value-First Engagement**: Provide helpful information before any self-promotion
+2. **Human Approval**: AI suggests, human decides
+3. **Platform Compliance**: Respect all Terms of Service
+4. **Transparency**: Acknowledge AI assistance if asked
+5. **Rate Limiting**: Maximum 5 engagements per platform per day
+
+### Platform-Specific Rules
+
 **Reddit:**
-Follow 90/10 rule (90% helpful content, 10% promotion)
-No direct links in initial response
-Respect subreddit rules
+- Follow 90/10 rule (90% helpful content, 10% promotion)
+- No direct links in initial response
+- Respect subreddit rules
 
 **Instagram:**
-No automated DMs (violates ToS)
-Substantive comments only
-Engage with posts before promoting
+- No automated DMs (violates ToS)
+- Substantive comments only
+- Engage with posts before promoting
 
 **Pinterest:**
-Pin original content, not just promotional
-Provide value in descriptions
-Engage with community
+- Pin original content, not just promotional
+- Provide value in descriptions
+- Engage with community
 
-### Development Roadmap
-#### Phase 1: Midterm Proposal (Due Oct 30, 2025)
+---
 
-- [x]  Project structure and documentation
-- [x]  Core agent architecture
-- [x]  Database models
-- [x]  Proposal document (PDF)
-- [x]  Presentation slides
-- [x]  Architecture diagrams
-- [x]  UI wireframes
+## Development Roadmap
 
-#### Phase 2: Implementation (Post-Midterm)
+### Phase 1: Midterm Proposal (Due Oct 30, 2025)
+- [x] Project structure and documentation
+- [x] Core agent architecture
+- [x] Database models
+- [ ] Proposal document (PDF)
+- [ ] Presentation slides
+- [ ] Architecture diagrams
+- [ ] UI wireframes
 
-- [x]  Complete Reddit monitoring agent
-- [x]  Response generation agent
-- [x]  Artist dashboard (React)
-- [x]  Analytics engine
-- [x]  RLHF training loop
+### Phase 2: Implementation (Post-Midterm)
+- [ ] Complete Reddit monitoring agent
+- [ ] Response generation agent
+- [ ] Artist dashboard (React)
+- [ ] Analytics engine
+- [ ] RLHF training loop
 
-#### Phase 3: Deployment & Testing
+### Phase 3: Deployment & Testing
+- [ ] Cloud deployment
+- [ ] Live testing with Joe
+- [ ] Performance optimization
+- [ ] Final presentation
 
-- [x]  Cloud deployment
-- [ ]  Live testing with Joe
-- [ ]  Performance optimization
-- [ ]  Final presentation
+---
 
-### Team
-AI/ML Engineer: Agent architecture, prompt engineering, RLHF
-Backend Developer: Flask API, database, platform integrations
-Frontend Developer: React dashboard, UI/UX design
-Project Manager: Coordination, client communication, documentation
+## Team
 
-### Documentation
+- **AI/ML Engineer**: Agent architecture, prompt engineering, RLHF
+- **Backend Developer**: Flask API, database, platform integrations
+- **Frontend Developer**: React dashboard, UI/UX design
+- **Project Manager**: Coordination, client communication, documentation
+
+---
+
+## Documentation
+
 See `/CLAUDE_READTHIS/` for detailed project documentation:
+- `QUICK_REFERENCE.md` - Project overview
+- `ARCHITECTURE_OVERVIEW.md` - System architecture
+- `CUSTOMER_PERSONAS.md` - Target audience analysis
+- `ETHICAL_FRAMEWORK.md` - Engagement rules
+- `FILE_MAP.md` - Project structure
 
-`QUICK_REFERENCE.md` - Project overview
-`ARCHITECTURE_OVERVIEW.md` - System architecture
-`CUSTOMER_PERSONAS.md` - Target audience analysis
-`ETHICAL_FRAMEWORK.md` - Engagement rules
-`FILE_MAP.md` - Project structure
+---
 
-###Financial Model
-#### 6-Month Projection:
+## Financial Model
 
+**6-Month Projection:**
 - Investment: $350/month (API + hosting)
 - Revenue: 6.5 sales × $2,500 = $16,250
 - ROI: 660% for artist
 
-#### Conversion Funnel:
-
+**Conversion Funnel:**
 - 1,000 conversations monitored/month
 - 100 opportunities identified (10%)
 - 30 responses approved (30%)
 - 6 responses received (20%)
 - 1 sale/month (15% conversion)
 
-### License
+---
+
+## License
+
 Academic Project - ITAI 4373
 
-### Contact
-For questions about this project:
+---
 
+## Contact
+
+For questions about this project:
 - Course: ITAI 4373 - The New Nature of Work in AI
 - Client: Joe Fleishman - joefleishmanart.com
+
+---
+
+**Last Updated**: October 23, 2025
